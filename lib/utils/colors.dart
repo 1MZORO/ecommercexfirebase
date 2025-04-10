@@ -8,3 +8,4 @@ const colorPurple = Color(0xFF8E6CEF);
 const colorRed = Colors.red;
 const colorBlack = Colors.black;
 const colorGrey = Colors.grey;
+const colorWhite = Colors.white;

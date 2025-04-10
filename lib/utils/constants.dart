@@ -4,10 +4,16 @@ const String txCreateAccount = "Create Account";
 const String txEmailAddress = "Email address";
 const String txEmail = "Email";
 const String txPassword = "Password";
+const String txForgotPassword = "Forgot Password? ";
+const String txReset = "Reset";
 const String txFirstName = "First Name";
 const String txHome = "Home";
 const String txFeed = "Feed";
 const String txContinue = "Continue";
+const String txContinueWithApple = "Continue With Apple";
+const String txContinueWithGoogle = "Continue With Google";
+const String txCreateOne = "Create One";
+const String txDontHaveAccount = "Don't have an account? ";
 
 const numD001 = 0.001;
 const numD = 0;

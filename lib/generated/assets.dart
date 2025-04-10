@@ -2,6 +2,8 @@
 class Assets {
   Assets._();
 
+  static const String assetsAppleLogo = 'assets/apple_logo.png';
+  static const String assetsGoogleLogo = 'assets/google_logo.png';
   static const String assetsSplashAnimation = 'assets/splash_animation.json';
 
 }

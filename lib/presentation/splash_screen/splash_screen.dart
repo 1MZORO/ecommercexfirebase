@@ -1,6 +1,5 @@
 import 'package:ecommercexfirebase/generated/assets.dart';
 import 'package:ecommercexfirebase/utils/colors.dart';
-import 'package:ecommercexfirebase/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:lottie/lottie.dart';
 import '../../routes/router.dart';
@@ -17,7 +16,7 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: 4),(){
-      router.push(AppRouter.loginScreen);
+      router.push(AppRouter.loginOneScreen);
     });
     super.initState();
   }
