@@ -3,7 +3,11 @@ class Assets {
   Assets._();
 
   static const String assetsAppleLogo = 'assets/apple_logo.png';
+  static const String assetsCloseEye = 'assets/close_eye.png';
   static const String assetsGoogleLogo = 'assets/google_logo.png';
+  static const String assetsHide = 'assets/hide.png';
+  static const String assetsOpenEye = 'assets/open_eye.png';
+  static const String assetsShow = 'assets/show.png';
   static const String assetsSplashAnimation = 'assets/splash_animation.json';
 
 }

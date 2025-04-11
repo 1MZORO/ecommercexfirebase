@@ -15,8 +15,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   void initState() {
-    Future.delayed(Duration(seconds: 4),(){
-      router.push(AppRouter.loginOneScreen);
+    Future.delayed(Duration(seconds: 2),(){
+      router.go(AppRouter.loginScreen);
     });
     super.initState();
   }
