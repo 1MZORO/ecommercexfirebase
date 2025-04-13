@@ -1,3 +1,6 @@
+import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_cubit.dart';
+import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_success_screen.dart';
+import 'package:ecommercexfirebase/presentation/otp_verified_screen/otp_verified_screen.dart';
 import 'package:ecommercexfirebase/presentation/home_screen/home_screen.dart';
 import 'package:ecommercexfirebase/presentation/login_screen/login_screen.dart';
 import 'package:ecommercexfirebase/presentation/signup_screen/signup_screen.dart';
@@ -15,6 +18,8 @@ class AppRouter {
   static const String signupScreen = "/signup_screen";
   static const String homeScreen = "/home_screen";
   static const String forgotScreen = "/forgot_screen";
+  static const String otpVerifiedScreen = "/otp_verified_screen";
+  static const String forgotSuccessScreen = "/forgot_success_screen";
 }
 
 final GoRouter router = GoRouter(
@@ -61,7 +66,28 @@ final GoRouter router = GoRouter(
       path: AppRouter.forgotScreen,
       name: AppRouter.forgotScreen,
       builder: (BuildContext context, GoRouterState state) {
-        return const ForgotScreen();
+        return BlocProvider(create: (_)=>ForgotCubit(),
+          child: const ForgotScreen(),
+        );
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: navigatorKey,
+      path: AppRouter.forgotSuccessScreen,
+      name: AppRouter.forgotSuccessScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        final cubit = state.extra as ForgotCubit;
+        return BlocProvider.value(
+          value: cubit,
+          child: const ForgotSuccessScreen(),
+        );      },
+    ),
+    GoRoute(
+      parentNavigatorKey: navigatorKey,
+      path: AppRouter.otpVerifiedScreen,
+      name: AppRouter.otpVerifiedScreen,
+      builder: (BuildContext context, GoRouterState state) {
+         return const OtpVerifiedScreen();
       },
     ),
   ],

@@ -4,6 +4,7 @@ class Assets {
 
   static const String assetsAppleLogo = 'assets/apple_logo.png';
   static const String assetsCloseEye = 'assets/close_eye.png';
+  static const String assetsForgotMessageLogo = 'assets/forgot_message_logo.png';
   static const String assetsGoogleLogo = 'assets/google_logo.png';
   static const String assetsHide = 'assets/hide.png';
   static const String assetsOpenEye = 'assets/open_eye.png';

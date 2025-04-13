@@ -14,8 +14,7 @@ class ForgotScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocProvider(create: (_)=>ForgotCubit(),
-    child: BlocBuilder<ForgotCubit,ForgotState>(builder: (context,state){
+    return BlocBuilder<ForgotCubit,ForgotState>(builder: (context,state){
       final cubit = context.read<ForgotCubit>();
       return Scaffold(
         body: Container(
@@ -34,8 +33,8 @@ class ForgotScreen extends StatelessWidget {
                   height: size(context).width*numD14,
                   width: size(context).width*numD14,
                   decoration: BoxDecoration(
-                    color: colorLightTwo,
-                    shape: BoxShape.circle
+                      color: colorLightTwo,
+                      shape: BoxShape.circle
                   ),
                   child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
                 ),
@@ -52,12 +51,13 @@ class ForgotScreen extends StatelessWidget {
                 controller: cubit.emailForgotController,
               ),
               SizedBox(height: size(context).width*numD08,),
-              CommonButton(onPressed: (){}, text: txContinue)
+              CommonButton(onPressed: (){
+                router.push(AppRouter.forgotSuccessScreen,extra: cubit);
+              }, text: txContinue)
             ],
           ),
         ),
       );;
-    }),
-    );
+    });
   }
 }

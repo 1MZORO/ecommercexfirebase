@@ -8,15 +8,21 @@ const String txPassword = "Password";
 const String txConfirmPassword = "Confirm Password";
 const String txForgotPassword = "Forgot Password";
 const String txReset = "Reset";
+const String txResend = "Resend";
 const String txQue = "? ";
 const String txFirstName = "First Name";
 const String txHome = "Home";
 const String txFeed = "Feed";
 const String txContinue = "Continue";
+const String txSubmit = "Submit";
 const String txContinueWithApple = "Continue With Apple";
 const String txContinueWithGoogle = "Continue With Google";
 const String txCreateOne = "Create One";
+const String txForgotSuccessMessage = "We Sent you an Email to reset your password.";
+const String txForgotSuccessMessageTwo = "We have sent the verification code to your email address";
 const String txDontHaveAccount = "Don't have an account? ";
+const String txVerificationCode = "Verification Code";
+const String txDidNotReceiveCode = "Didn't receive the code?";
 
 const numD001 = 0.001;
 const numD = 0;
@@ -217,3 +223,6 @@ const numInt100 = 100;
 Size size(BuildContext context) {
   return MediaQuery.of(context).size;
 }
+
+final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
+final RegExp passwordRegex = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');

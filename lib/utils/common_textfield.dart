@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
-
 import 'colors.dart';
 import 'constants.dart';
+import 'package:flutter/material.dart';
 
 class CommonTextField extends StatelessWidget {
   final String? hintText;
@@ -9,7 +8,8 @@ class CommonTextField extends StatelessWidget {
   final GlobalKey? formKey;
   final bool? showPassword;
   final Widget? suffixIconWidget;
-  const CommonTextField({super.key, this.hintText, this.controller, this.formKey, this.showPassword, this.suffixIconWidget});
+  final FormFieldValidator<String>? validator;
+  const CommonTextField({super.key, this.hintText, this.controller, this.formKey, this.showPassword, this.suffixIconWidget, this.validator});
 
   @override
   Widget build(BuildContext context) {
@@ -17,6 +17,8 @@ class CommonTextField extends StatelessWidget {
       key: formKey,
       controller: controller,
       obscureText: showPassword ?? false,
+      validator: validator,
+      keyboardType: TextInputType.emailAddress,
       autovalidateMode: AutovalidateMode.onUserInteraction,
       decoration: InputDecoration(
         hintText: hintText,
@@ -30,6 +32,10 @@ class CommonTextField extends StatelessWidget {
             borderRadius: BorderRadius.circular(size(context).width*numD02)
         ),
         errorBorder: OutlineInputBorder(
+            borderSide: BorderSide(color: colorRed),
+            borderRadius: BorderRadius.circular(size(context).width*numD02)
+        ),
+        focusedErrorBorder: OutlineInputBorder(
             borderSide: BorderSide(color: colorRed),
             borderRadius: BorderRadius.circular(size(context).width*numD02)
         ),

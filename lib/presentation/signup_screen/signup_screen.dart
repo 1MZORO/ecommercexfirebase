@@ -6,7 +6,6 @@ import 'package:ecommercexfirebase/utils/common_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../utils/colors.dart';
 import '../../utils/common_text.dart';
 import '../../utils/common_textfield.dart';
@@ -79,7 +78,6 @@ class SignupScreen extends StatelessWidget {
                 SizedBox(height: size(context).width*numD08,),
                 CommonButton(onPressed: (){}, text: txContinue),
                 SizedBox(height: size(context).width*numD05,),
-
                 RichText(
                   text: TextSpan(
                     text: '$txForgotPassword$txQue',
@@ -99,7 +97,6 @@ class SignupScreen extends StatelessWidget {
                     ],
                   ),
                 ),
-
               ],
             ),
           ),
