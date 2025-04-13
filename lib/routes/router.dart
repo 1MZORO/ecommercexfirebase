@@ -1,5 +1,8 @@
+import 'package:ecommercexfirebase/presentation/account_screen/account_screen.dart';
+import 'package:ecommercexfirebase/presentation/cart_screen/cart_screen.dart';
 import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_cubit.dart';
 import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_success_screen.dart';
+import 'package:ecommercexfirebase/presentation/order_screen/order_screen.dart';
 import 'package:ecommercexfirebase/presentation/otp_verified_screen/otp_verified_screen.dart';
 import 'package:ecommercexfirebase/presentation/home_screen/home_screen.dart';
 import 'package:ecommercexfirebase/presentation/login_screen/login_screen.dart';
@@ -8,6 +11,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import '../main.dart';
+import '../presentation/dashboard_screen/dashboard_screen.dart';
 import '../presentation/forgot_screen/forgot_screen.dart';
 import '../presentation/login_screen/login_cubit.dart';
 import '../presentation/splash_screen/splash_screen.dart';
@@ -17,6 +21,9 @@ class AppRouter {
   static const String loginScreen = "/login_screen";
   static const String signupScreen = "/signup_screen";
   static const String homeScreen = "/home_screen";
+  static const String cartScreen = "/cart_screen";
+  static const String orderScreen = "/order_screen";
+  static const String accountScreen = "/account_screen";
   static const String forgotScreen = "/forgot_screen";
   static const String otpVerifiedScreen = "/otp_verified_screen";
   static const String forgotSuccessScreen = "/forgot_success_screen";
@@ -32,14 +39,6 @@ final GoRouter router = GoRouter(
       name: AppRouter.splashScreen,
       builder: (BuildContext context, GoRouterState state) {
         return const SplashScreen();
-      },
-    ),
-    GoRoute(
-      parentNavigatorKey: navigatorKey,
-      path: AppRouter.homeScreen,
-      name: AppRouter.homeScreen,
-      builder: (BuildContext context, GoRouterState state) {
-        return const HomeScreen();
       },
     ),
     GoRoute(
@@ -90,5 +89,45 @@ final GoRouter router = GoRouter(
          return const OtpVerifiedScreen();
       },
     ),
+    ShellRoute(
+        navigatorKey: shellNavigatorKey,
+        builder: (context, state, child) {
+          return DashboardScreen(child: child);
+        },
+        routes: [
+          GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
+            path: AppRouter.homeScreen,
+            name: AppRouter.homeScreen,
+            builder: (BuildContext context, GoRouterState state) {
+              return const HomeScreen();
+            },
+          ),
+          GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
+            path: AppRouter.cartScreen,
+            name: AppRouter.cartScreen,
+            builder: (BuildContext context, GoRouterState state) {
+              return const CartScreen();
+            },
+          ),
+          GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
+            path: AppRouter.orderScreen,
+            name: AppRouter.orderScreen,
+            builder: (BuildContext context, GoRouterState state) {
+              return const OrderScreen();
+            },
+          ),
+          GoRoute(
+            parentNavigatorKey: shellNavigatorKey,
+            path: AppRouter.accountScreen,
+            name: AppRouter.accountScreen,
+            builder: (BuildContext context, GoRouterState state) {
+              return const AccountScreen();
+            },
+          ),
+
+        ])
   ],
 );

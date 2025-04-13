@@ -1,4 +1,3 @@
-import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_cubit.dart';
 import 'package:ecommercexfirebase/presentation/otp_verified_screen/otp_verified_cubit.dart';
 import 'package:ecommercexfirebase/utils/colors.dart';
 import 'package:ecommercexfirebase/utils/common_button.dart';

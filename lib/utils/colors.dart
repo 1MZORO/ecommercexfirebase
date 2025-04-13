@@ -7,5 +7,6 @@ const colorDarkTwo = Color(0xFF342F3F);
 const colorPurple = Color(0xFF8E6CEF);
 const colorRed = Colors.red;
 const colorBlack = Colors.black;
+const colorBlack54 = Colors.black54;
 const colorGrey = Colors.grey;
 const colorWhite = Colors.white;

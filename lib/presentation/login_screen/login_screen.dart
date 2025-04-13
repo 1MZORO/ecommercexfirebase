@@ -7,6 +7,7 @@ import 'package:ecommercexfirebase/utils/common_text.dart';
 import 'package:ecommercexfirebase/utils/constants.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/assets.dart';
 import '../../utils/common_textfield.dart';
@@ -66,14 +67,13 @@ class LoginScreen extends StatelessWidget {
                                         hintText: txEmailAddress,
                                         controller: cubit.emailController,
                                         validator: (value) {
-                                          log('<<< $value');
                                           if (value!.trim().isEmpty) {
-                                            return 'Please enter an email';
+                                            return txFieldCanNotBeEmptyValidation;
                                           }
                                           if (!emailRegex.hasMatch(
                                             value.trim(),
                                           )) {
-                                            return 'Enter a valid email';
+                                            return txEnterValidEmailValidation;
                                           }
                                           return null;
                                         },
@@ -84,10 +84,10 @@ class LoginScreen extends StatelessWidget {
                                         showPassword: cubit.state.showPassword,
                                         validator: (value) {
                                           if (value == null || value.isEmpty) {
-                                            return 'Please enter an Password';
+                                            return txFieldCanNotBeEmptyValidation;
                                           }
                                           if (!passwordRegex.hasMatch(value)) {
-                                            return 'Enter a valid Password';
+                                            return txEnterValidPassValidation;
                                           }
                                           return null;
                                         },
@@ -98,7 +98,7 @@ class LoginScreen extends StatelessWidget {
                                             );
                                           },
                                           child: Transform.scale(
-                                            scale: 0.5,
+                                            scale: 0.4,
                                             child: Image.asset(
                                               cubit.state.showPassword!
                                                   ? Assets.assetsHide
@@ -112,11 +112,18 @@ class LoginScreen extends StatelessWidget {
                                   SizedBox(
                                     height: size(context).width * numD04,
                                   ),
+
                                   CommonButton(
                                     onPressed: () {
-                                      cubit.state.currentPage == 0
-                                          ? cubit.nextPage()
-                                          : router.push(AppRouter.homeScreen);
+                                      if (index == 0) {
+                                        if (cubit.emailFormKey.currentState!.validate()) {
+                                          cubit.nextPage();
+                                        }
+                                      } else {
+                                        if (cubit.passFormKey.currentState!.validate()) {
+                                          cubit.signInWithEmail(context);
+                                        }
+                                      }
                                     },
                                     text: txContinue,
                                   ),
@@ -157,7 +164,9 @@ class LoginScreen extends StatelessWidget {
                                                 size(context).width * numD16,
                                           ),
                                           CommonButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              showCustomToast(context, 'Coming soon');
+                                            },
                                             text: txContinueWithApple,
                                             leadingIconPath:
                                                 Assets.assetsAppleLogo,
@@ -169,7 +178,9 @@ class LoginScreen extends StatelessWidget {
                                                 size(context).width * numD04,
                                           ),
                                           CommonButton(
-                                            onPressed: () {},
+                                            onPressed: () {
+                                              cubit.signInWithGoogle(context);
+                                            },
                                             text: txContinueWithGoogle,
                                             leadingIconPath:
                                                 Assets.assetsGoogleLogo,

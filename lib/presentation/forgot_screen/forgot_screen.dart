@@ -17,47 +17,64 @@ class ForgotScreen extends StatelessWidget {
     return BlocBuilder<ForgotCubit,ForgotState>(builder: (context,state){
       final cubit = context.read<ForgotCubit>();
       return Scaffold(
-        body: Container(
-          margin: EdgeInsets.symmetric(
-            horizontal: size(context).width * numD04,
-          ),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(height: size(context).width * numD20),
-              GestureDetector(
-                onTap: (){
-                  router.pop();
-                },
-                child: Container(
-                  height: size(context).width*numD14,
-                  width: size(context).width*numD14,
-                  decoration: BoxDecoration(
-                      color: colorLightTwo,
-                      shape: BoxShape.circle
+        body: Form(
+          key: cubit.formKey,
+          child: Container(
+            margin: EdgeInsets.symmetric(
+              horizontal: size(context).width * numD04,
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(height: size(context).width * numD20),
+                GestureDetector(
+                  onTap: (){
+                    router.pop();
+                  },
+                  child: Container(
+                    height: size(context).width*numD14,
+                    width: size(context).width*numD14,
+                    decoration: BoxDecoration(
+                        color: colorLightTwo,
+                        shape: BoxShape.circle
+                    ),
+                    child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
                   ),
-                  child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
                 ),
-              ),
-              SizedBox(height: size(context).width * numD05),
-              CommonText(
-                text: txForgotPassword,
-                fontSize: size(context).width * numD09,
-                fontWeight: FontWeight.bold,
-              ),
-              SizedBox(height: size(context).width * numD06),
-              CommonTextField(
-                hintText: txEmailAddress,
-                controller: cubit.emailForgotController,
-              ),
-              SizedBox(height: size(context).width*numD08,),
-              CommonButton(onPressed: (){
-                router.push(AppRouter.forgotSuccessScreen,extra: cubit);
-              }, text: txContinue)
-            ],
+                SizedBox(height: size(context).width * numD05),
+                CommonText(
+                  text: txForgotPassword,
+                  fontSize: size(context).width * numD09,
+                  fontWeight: FontWeight.bold,
+                ),
+                SizedBox(height: size(context).width * numD06),
+                CommonTextField(
+                  hintText: txEmailAddress,
+                  controller: cubit.emailForgotController,
+                  validator: (value) {
+                    if (value!.trim().isEmpty) {
+                      return txFieldCanNotBeEmptyValidation;
+                    }
+                    if (!emailRegex.hasMatch(
+                      value.trim(),
+                    )) {
+                      return txEnterValidEmailValidation;
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: size(context).width*numD08,),
+                CommonButton(onPressed: (){
+                  if(cubit.formKey.currentState!.validate()){
+                    cubit.forgotPassword(context);
+                    router.push(AppRouter.forgotSuccessScreen,extra: cubit);
+                  }
+                }, text: txContinue)
+              ],
+            ),
           ),
         ),
-      );;
+      );
     });
   }
 }

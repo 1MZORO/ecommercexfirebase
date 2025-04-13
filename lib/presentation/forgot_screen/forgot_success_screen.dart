@@ -32,7 +32,7 @@ class ForgotSuccessScreen extends StatelessWidget {
           SizedBox(height: size(context).width * numD04),
           CommonButton(
             onPressed: () {
-              router.push(AppRouter.otpVerifiedScreen,extra: cubit);
+              router.goNamed(AppRouter.loginScreen);
             },
             text: txContinue,
             width: size(context).width * numD40,

@@ -3,11 +3,19 @@ class Assets {
   Assets._();
 
   static const String assetsAppleLogo = 'assets/apple_logo.png';
+  static const String assetsCartIcon = 'assets/cart_icon.png';
   static const String assetsCloseEye = 'assets/close_eye.png';
   static const String assetsForgotMessageLogo = 'assets/forgot_message_logo.png';
   static const String assetsGoogleLogo = 'assets/google_logo.png';
+  static const String assetsHeartIcon = 'assets/heart_icon.png';
   static const String assetsHide = 'assets/hide.png';
+  static const String assetsHomeIcon = 'assets/home_icon.png';
   static const String assetsOpenEye = 'assets/open_eye.png';
+  static const String assetsOrderBox = 'assets/order_box.png';
+  static const String assetsOrderBus = 'assets/order_bus.png';
+  static const String assetsOrderIcon = 'assets/order_icon.png';
+  static const String assetsOrderNow = 'assets/order-now.png';
+  static const String assetsPersonIcon = 'assets/person_icon.png';
   static const String assetsShow = 'assets/show.png';
   static const String assetsSplashAnimation = 'assets/splash_animation.json';
 

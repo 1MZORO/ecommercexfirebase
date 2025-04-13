@@ -22,82 +22,158 @@ class SignupScreen extends StatelessWidget {
       return GestureDetector(
         onTap: ()=> unFocus(context),
         child: Scaffold(
-          body: Container(
-            margin: EdgeInsets.symmetric(horizontal: size(context).width*numD04),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                SizedBox(height: size(context).width * numD20),
-                GestureDetector(
-                  onTap: (){
-                    router.pop();
-                  },
-                  child: Container(
-                    height: size(context).width*numD14,
-                    width: size(context).width*numD14,
-                    decoration: BoxDecoration(
-                        color: colorLightTwo,
-                        shape: BoxShape.circle
-                    ),
-                    child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
-                  ),
-                ),
-                SizedBox(height: size(context).width * numD05),                CommonText(
-                  text: txCreateAccount,
-                  fontSize: size(context).width * numD08,
-                  fontWeight: FontWeight.bold,
-                ),
-                SizedBox(height: size(context).width * numD06),
-                CommonTextField(
-                  hintText: txUsername,
-                ),
-                SizedBox(height: size(context).width*numD03,),
-                CommonTextField(
-                  hintText: txEmailAddress,
-                ),
-                SizedBox(height: size(context).width*numD03,),
-                CommonTextField(
-                  hintText: txPassword,
-                  showPassword: cubit.state.showPassword,
-                  suffixIconWidget: InkWell(
+          body: SingleChildScrollView(
+            child: Container(
+              margin: EdgeInsets.symmetric(horizontal: size(context).width*numD04),
+              child: Form(
+                key: cubit.formKey,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    SizedBox(height: size(context).width * numD20),
+                    GestureDetector(
                       onTap: (){
-                        cubit.toggleShowPassword(cubit.state.showPassword!);
+                        router.pop();
                       },
-                      child: Transform.scale(scale: 0.5, child: Image.asset(cubit.state.showPassword! ? Assets.assetsHide : Assets.assetsShow,height: size(context).width*numD01,))),
-                ),
-                SizedBox(height: size(context).width*numD03,),
-                CommonTextField(
-                  hintText: txConfirmPassword,
-                  showPassword: cubit.state.showConfirmPassword,
-                  suffixIconWidget: InkWell(
-                      onTap: (){
-                        cubit.toggleShowConfirmPassword(cubit.state.showConfirmPassword!);
-                      },
-                      child: Transform.scale(scale: 0.5, child: Image.asset(cubit.state.showConfirmPassword! ? Assets.assetsHide : Assets.assetsShow,height: size(context).width*numD01,))),
-                ),
-                SizedBox(height: size(context).width*numD08,),
-                CommonButton(onPressed: (){}, text: txContinue),
-                SizedBox(height: size(context).width*numD05,),
-                RichText(
-                  text: TextSpan(
-                    text: '$txForgotPassword$txQue',
-                    style: TextStyle(color: colorBlack),
-                    children: [
-                      TextSpan(
-                        text: txReset,
-                        style: TextStyle(
-                          fontWeight: FontWeight.bold,
+                      child: Container(
+                        height: size(context).width*numD14,
+                        width: size(context).width*numD14,
+                        decoration: BoxDecoration(
+                            color: colorLightTwo,
+                            shape: BoxShape.circle
                         ),
-                        recognizer:
-                        TapGestureRecognizer()
-                          ..onTap = () {
-                            router.push(AppRouter.forgotScreen);
-                          },
+                        child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
                       ),
-                    ],
-                  ),
+                    ),
+                    SizedBox(height: size(context).width * numD05),                CommonText(
+                      text: txCreateAccount,
+                      fontSize: size(context).width * numD08,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    SizedBox(height: size(context).width * numD06),
+                    CommonTextField(
+                      hintText: txUsername,
+                      controller: cubit.userNameController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return txFieldCanNotBeEmptyValidation;
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: size(context).width*numD03,),
+                    CommonTextField(
+                      hintText: txEmailAddress,
+                      controller: cubit.emailController,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return txFieldCanNotBeEmptyValidation;
+                        }
+                        if (!emailRegex.hasMatch(value)) {
+                          return txEnterValidEmailValidation;
+                        }
+                        return null;
+                      },
+                    ),
+                    SizedBox(height: size(context).width*numD03,),
+                    CommonTextField(
+                      controller: cubit.passController,
+                      hintText: txPassword,
+                      showPassword: cubit.state.showPassword,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return txFieldCanNotBeEmptyValidation;
+                        }
+                        if (!passwordRegex.hasMatch(value)) {
+                          return txEnterValidPassValidation;
+                        }
+                        return null;
+                      },
+                      suffixIconWidget: InkWell(
+                          onTap: (){
+                            cubit.toggleShowPassword(cubit.state.showPassword!);
+                          },
+                          child: Transform.scale(scale: 0.4, child: Image.asset(cubit.state.showPassword! ? Assets.assetsHide : Assets.assetsShow,height: size(context).width*numD01,))),
+                    ),
+                    SizedBox(height: size(context).width*numD03,),
+                    CommonTextField(
+                      controller: cubit.confirmPassController,
+                      hintText: txConfirmPassword,
+                      showPassword: cubit.state.showConfirmPassword,
+                      validator: (value) {
+                        if (value == null || value.isEmpty) {
+                          return txFieldCanNotBeEmptyValidation;
+                        }
+                        if (!passwordRegex.hasMatch(value)) {
+                          return txEnterValidPassValidation;
+                        }if(cubit.passController.text != value){
+                          return txPasswordMustBeSame;
+                        }
+                        return null;
+                      },
+                      suffixIconWidget: InkWell(
+                          onTap: (){
+                            cubit.toggleShowConfirmPassword(cubit.state.showConfirmPassword!);
+                          },
+                          child: Transform.scale(scale: 0.4, child: Image.asset(cubit.state.showConfirmPassword! ? Assets.assetsHide : Assets.assetsShow,height: size(context).width*numD01,))),
+                    ),
+                    SizedBox(height: size(context).width*numD08,),
+                    CommonButton(onPressed: (){
+                      if(cubit.formKey.currentState!.validate()){
+                          cubit.signUpWithEmail(context);
+                      }
+                    }, text: txContinue),
+                    SizedBox(height: size(context).width*numD05,),
+                    RichText(
+                      text: TextSpan(
+                        text: '$txForgotPassword$txQue',
+                        style: TextStyle(color: colorBlack),
+                        children: [
+                          TextSpan(
+                            text: txReset,
+                            style: TextStyle(
+                              fontWeight: FontWeight.bold,
+                            ),
+                            recognizer:
+                            TapGestureRecognizer()
+                              ..onTap = () {
+                                router.push(AppRouter.forgotScreen);
+                              },
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height:
+                      size(context).width * numD12,
+                    ),
+                    CommonButton(
+                      onPressed: () {
+                        showCustomToast(context, 'Coming soon');
+                      },
+                      text: txContinueWithApple,
+                      leadingIconPath:
+                      Assets.assetsAppleLogo,
+                      backgroundColor: colorLightTwo,
+                      textColor: colorBlack,
+                    ),
+                    SizedBox(
+                      height:
+                      size(context).width * numD04,
+                    ),
+                    CommonButton(
+                      onPressed: () {
+                        cubit.signUpWithGoogle(context);
+                      },
+                      text: txContinueWithGoogle,
+                      leadingIconPath:
+                      Assets.assetsGoogleLogo,
+                      backgroundColor: colorLightTwo,
+                      textColor: colorBlack,
+                    ),
+                  ],
                 ),
-              ],
+              ),
             ),
           ),
         ),
