@@ -1,5 +1,4 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
-
 import '../../routes/router.dart';
 
 class DashBoardCubit extends Cubit<DashboardState> {

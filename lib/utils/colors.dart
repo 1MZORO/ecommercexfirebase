@@ -10,3 +10,5 @@ const colorBlack = Colors.black;
 const colorBlack54 = Colors.black54;
 const colorGrey = Colors.grey;
 const colorWhite = Colors.white;
+const colorTransparent = Colors.transparent;
+const colorDeepPurple = Colors.deepPurpleAccent;

@@ -30,7 +30,7 @@ class SignupScreen extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: size(context).width * numD20),
+                    SizedBox(height: size(context).width * numD16),
                     GestureDetector(
                       onTap: (){
                         router.pop();
@@ -45,7 +45,8 @@ class SignupScreen extends StatelessWidget {
                         child: Center(child: Icon(Icons.arrow_back_ios_new_rounded)),
                       ),
                     ),
-                    SizedBox(height: size(context).width * numD05),                CommonText(
+                    SizedBox(height: size(context).width * numD03),
+                    CommonText(
                       text: txCreateAccount,
                       fontSize: size(context).width * numD08,
                       fontWeight: FontWeight.bold,

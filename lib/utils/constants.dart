@@ -9,7 +9,12 @@ const String txConfirmPassword = "Confirm password";
 const String txForgotPassword = "Forgot Password";
 const String txReset = "Reset";
 const String txResend = "Resend";
+const String txSearch = "Search...";
 const String txQue = "? ";
+const String txTopSelling = "Top Selling";
+const String txRecentSearch = "Recent Search";
+const String txSeeAll = "See All";
+const String txCategories = "Categories";
 const String txFirstName = "First Name";
 const String txHome = "Home";
 const String txFeed = "Feed";
@@ -32,8 +37,23 @@ const String txForgotSuccessMessageTwo = "We have sent the verification code to 
 const String txDontHaveAccount = "Don't have an account? ";
 const String txVerificationCode = "Verification Code";
 const String txDidNotReceiveCode = "Didn't receive the code?";
+const String txBrandName = "Brand Name";
+const String txProductName = "Product Name";
+const String txProductPrice = "Product Price";
+const String txProductType = "Product Type";
+const String txEnterHere = "Enter Here";
+const String txClickHere = "Click Here";
+const String txSelectSize = "Select size's here";
+const String txSelectColorAndSize = "Select color and size";
+const String txSelectColor = "Select color's here";
+const String txSelectProductType = "Select Product Type";
+const String txSelectImages = "Select Images";
+const String txSignOut = "Sign Out";
+const String txDescription = "Description";
 
 const numD001 = 0.001;
+const numD0013 = 0.0013;
+const numD0015 = 0.0015;
 const numD = 0;
 const numD002 = 0.002;
 const numD003 = 0.003;
@@ -235,3 +255,4 @@ Size size(BuildContext context) {
 
 final RegExp emailRegex = RegExp(r'^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$');
 final RegExp passwordRegex = RegExp(r'^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$');
+final RegExp decimalRegex = RegExp(r'^\d+(\.\d+)?$');

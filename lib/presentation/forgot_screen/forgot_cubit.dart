@@ -1,4 +1,3 @@
-import 'package:ecommercexfirebase/routes/router.dart';
 import 'package:ecommercexfirebase/utils/common_widget.dart';
 import 'package:ecommercexfirebase/utils/constants.dart';
 import 'package:firebase_auth/firebase_auth.dart';

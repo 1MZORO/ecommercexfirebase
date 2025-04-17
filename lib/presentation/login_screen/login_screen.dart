@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:ecommercexfirebase/routes/router.dart';
 import 'package:ecommercexfirebase/presentation/login_screen/login_cubit.dart';
 import 'package:ecommercexfirebase/utils/colors.dart';
@@ -10,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import '../../generated/assets.dart';
+import '../../theme/theme_cubit.dart';
 import '../../utils/common_textfield.dart';
 import '../../utils/common_widget.dart';
 
@@ -18,6 +18,7 @@ class LoginScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = context.watch<ThemeCubit>().state.themeMode;
     return BlocBuilder<LoginCubit, LoginState>(
       builder: (context, state) {
         final cubit = context.read<LoginCubit>();
@@ -33,6 +34,7 @@ class LoginScreen extends StatelessWidget {
               unFocus(context);
             },
             child: Scaffold(
+              backgroundColor: Theme.of(context).scaffoldBackgroundColor,
               body: SingleChildScrollView(
                 child: Container(
                   height: size(context).height,
@@ -214,6 +216,11 @@ class LoginScreen extends StatelessWidget {
                                           ),
                                         ),
                                       ),
+                                  SizedBox(height: 30,),
+                                  Switch(value: context.read<ThemeCubit>().value,
+                                    onChanged: (value) {
+                                      context.read<ThemeCubit>().toggleTheme(value);
+                                    },)
                                 ],
                               ),
                             );

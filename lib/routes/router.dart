@@ -1,5 +1,7 @@
 import 'package:ecommercexfirebase/presentation/account_screen/account_screen.dart';
+import 'package:ecommercexfirebase/presentation/add_product_screen/add_product_screen.dart';
 import 'package:ecommercexfirebase/presentation/cart_screen/cart_screen.dart';
+import 'package:ecommercexfirebase/presentation/details_screen/details_screen.dart';
 import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_cubit.dart';
 import 'package:ecommercexfirebase/presentation/forgot_screen/forgot_success_screen.dart';
 import 'package:ecommercexfirebase/presentation/order_screen/order_screen.dart';
@@ -27,6 +29,8 @@ class AppRouter {
   static const String forgotScreen = "/forgot_screen";
   static const String otpVerifiedScreen = "/otp_verified_screen";
   static const String forgotSuccessScreen = "/forgot_success_screen";
+  static const String detailsScreen = "/details_screen";
+  static const String addProductScreen = "/add_product_screen";
 }
 
 final GoRouter router = GoRouter(
@@ -87,6 +91,22 @@ final GoRouter router = GoRouter(
       name: AppRouter.otpVerifiedScreen,
       builder: (BuildContext context, GoRouterState state) {
          return const OtpVerifiedScreen();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: navigatorKey,
+      path: AppRouter.detailsScreen,
+      name: AppRouter.detailsScreen,
+      builder: (BuildContext context, GoRouterState state) {
+        return const DetailsScreen();
+      },
+    ),
+    GoRoute(
+      parentNavigatorKey: navigatorKey,
+      path: AppRouter.addProductScreen,
+      name: AppRouter.addProductScreen,
+      builder: (BuildContext context, GoRouterState state) {
+         return const AddProductScreen();
       },
     ),
     ShellRoute(

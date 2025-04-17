@@ -17,7 +17,7 @@ class LoginCubit extends Cubit<LoginState> {
   final _firebaseAuth = FirebaseAuth.instance;
   final GoogleSignIn _googleSignIn = GoogleSignIn();
 
-  LoginCubit() : super(LoginState(currentPage: 0,showPassword: true)) {
+  LoginCubit() : super(LoginState(currentPage: 0,showPassword: true,theme: false)) {
     pageController.addListener(() {
       final page = pageController.page?.round() ?? 0;
       if (page != state.currentPage) {
@@ -28,6 +28,9 @@ class LoginCubit extends Cubit<LoginState> {
 
   void toggleShowPassword(bool value){
     emit(state.copyWith(showPassword: value ? false : true));
+  }
+  void toggleTheme(bool value){
+    emit(state.copyWith(theme: value));
   }
 
   void nextPage() {
@@ -78,12 +81,14 @@ class LoginCubit extends Cubit<LoginState> {
 class LoginState {
   final int currentPage;
   final bool? showPassword;
-  LoginState({this.showPassword, required this.currentPage});
+  final bool theme;
+  LoginState({required this.theme, this.showPassword, required this.currentPage});
 
-  LoginState copyWith({int? currentPage,bool? showPassword}) {
+  LoginState copyWith({int? currentPage,bool? showPassword,bool? theme}) {
     return LoginState(
       currentPage: currentPage ?? this.currentPage,
-      showPassword: showPassword ?? this.showPassword
+      showPassword: showPassword ?? this.showPassword,
+        theme: theme ?? this.theme
     );
   }
 }

@@ -4,19 +4,31 @@ class Assets {
 
   static const String assetsAppleLogo = 'assets/apple_logo.png';
   static const String assetsCartIcon = 'assets/cart_icon.png';
+  static const String assetsChoiceIcon = 'assets/choice_icon.png';
   static const String assetsCloseEye = 'assets/close_eye.png';
+  static const String assetsDeleteIcon = 'assets/delete_icon.png';
   static const String assetsForgotMessageLogo = 'assets/forgot_message_logo.png';
+  static const String assetsGalleryIcon = 'assets/gallery_icon.png';
   static const String assetsGoogleLogo = 'assets/google_logo.png';
+  static const String assetsHeartFillIcon = 'assets/heart_fill_icon.png';
   static const String assetsHeartIcon = 'assets/heart_icon.png';
   static const String assetsHide = 'assets/hide.png';
   static const String assetsHomeIcon = 'assets/home_icon.png';
+  static const String assetsHoodieImage = 'assets/hoodie_image.png';
+  static const String assetsInformationIcon = 'assets/information_icon.png';
+  static const String assetsMenuIcon = 'assets/menu_icon.png';
+  static const String assetsNotificationIcon = 'assets/notification_icon.png';
   static const String assetsOpenEye = 'assets/open_eye.png';
   static const String assetsOrderBox = 'assets/order_box.png';
   static const String assetsOrderBus = 'assets/order_bus.png';
   static const String assetsOrderIcon = 'assets/order_icon.png';
   static const String assetsOrderNow = 'assets/order-now.png';
+  static const String assetsPaintIcon = 'assets/paint_icon.png';
   static const String assetsPersonIcon = 'assets/person_icon.png';
+  static const String assetsSearchIcon = 'assets/search_icon.png';
   static const String assetsShow = 'assets/show.png';
   static const String assetsSplashAnimation = 'assets/splash_animation.json';
+  static const String assetsTagIcon = 'assets/tag_icon.png';
+  static const String assetsUploadImageIcon = 'assets/upload_image_icon.png';
 
 }
